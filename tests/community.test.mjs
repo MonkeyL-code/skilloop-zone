@@ -21,3 +21,11 @@ test('publishing an exchange topic needs verification and preserves both sides o
   assert.equal(state.topics[0].want,post.want);
   assert.equal(state.users.you.balance,2,'发帖不奖励积分');
 });
+
+test('a teaching availability setting is shared with the profile and cannot be set using text truthiness',()=>{
+  let state=reduce(createDemoState(),{type:'LOGIN',nickname:'小屿'});
+  state=reduce(state,{type:'PROFILE',offer:'Photoshop',acceptingHelp:false});
+  assert.equal(state.users.you.acceptingHelp,false);
+  assert.equal(state.users.you.offer,'Photoshop');
+  assert.throws(()=>reduce(state,{type:'PROFILE',acceptingHelp:'false'}),/状态/);
+});

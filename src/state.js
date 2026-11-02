@@ -5,7 +5,7 @@ export function createDemoState() {
   return {
     version: 1, session: false,
     users: {
-      you: { id: 'you', name: '小屿', initial: '屿', balance: 0, reserved: 0, verified: false, welcomed: false, completed: 0, offer: 'Python', offerLevel: 'P2', want: 'Photoshop', wantLevel: 'S2', bio: '想把自己的旅行照片修得更好一点。', slot: '周六 15:00', evidence: '自述', works: [] },
+      you: { id: 'you', name: '小屿', initial: '屿', balance: 0, reserved: 0, verified: false, welcomed: false, completed: 0, offer: 'Python', offerLevel: 'P2', want: 'Photoshop', wantLevel: 'S2', bio: '想把自己的旅行照片修得更好一点。', slot: '周六 15:00', evidence: '自述', acceptingHelp: true, works: [] },
       ...Object.fromEntries(members.map(m => [m.id, { ...m, reserved: 0, verified: true }]))
     },
     orders: [], ledger: [], bookmarks: [], follows: [], reports: [], topics: [], replies: {},
@@ -38,7 +38,8 @@ export function reduce(previous, action) {
     case 'PROFILE':
       auth();
       for (const key of ['name', 'offer', 'want', 'slot']) if (action[key] !== undefined) you[key] = requiredText(action[key], key === 'name' ? '昵称' : '技能与时间', key === 'name' ? 20 : 100);
-      for (const key of ['offerLevel', 'wantLevel', 'bio']) if (action[key] !== undefined) you[key] = String(action[key]).trim().slice(0, 180);
+      for (const key of ['offerLevel', 'wantLevel', 'offerTitle', 'bio', 'evidence']) if (action[key] !== undefined) you[key] = String(action[key]).trim().slice(0, 180);
+      if (action.acceptingHelp !== undefined) { need(typeof action.acceptingHelp === 'boolean', '互助状态无效。'); you.acceptingHelp = action.acceptingHelp; }
       you.initial = [...you.name][0]; break;
     case 'BOOKMARK':
       state.bookmarks = state.bookmarks.includes(action.id) ? state.bookmarks.filter(id => id !== action.id) : [...state.bookmarks, action.id]; break;
