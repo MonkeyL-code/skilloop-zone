@@ -1,4 +1,3 @@
-/* Established admin palette and layout; full record identifiers remain readable. */
 .header-menu{position:relative;flex-shrink:0}
 .header-menu-toggle{display:grid;place-items:center;width:34px;height:34px;border:1px solid transparent;border-radius:5px;background:transparent;color:#61728f}
 .header-menu-toggle:hover,.header-menu-toggle[aria-expanded=true]{background:#edf2ff;color:#315bdb;border-color:#d8e2f5}
@@ -70,7 +69,6 @@
  .editor-footer-left [data-draft-id]{max-width:none}
 }
 
-/* Consistent local outline icons across navigation and dynamic content. */
 .ui-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:none;vertical-align:-3px;line-height:1}
 .ui-icon svg{display:block;width:100%;height:100%}
 .nav-icon.ui-icon{width:19px;height:19px}
