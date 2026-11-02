@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="190" viewBox="0 0 820 190" fill="none" role="img" aria-labelledby="title"><title id="title">Skilloop Zone</title>
+  <defs>
+    <linearGradient id="exchange" gradientUnits="userSpaceOnUse" x1="268" y1="40" x2="411" y2="96">
+      <stop stop-color="#3D67DC"/><stop offset=".36" stop-color="#7F86CF"/><stop offset=".65" stop-color="#C59CB8"/><stop offset="1" stop-color="#EF9870"/>
+    </linearGradient>
+    <filter id="satin" x="-8%" y="-15%" width="116%" height="130%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" seed="17" result="grain"/>
+      <feColorMatrix in="grain" type="saturate" values="0" result="grey"/>
+      <feComponentTransfer in="grey" result="veil"><feFuncA type="linear" slope=".16"/></feComponentTransfer>
+      <feComposite in="veil" in2="SourceGraphic" operator="in" result="texture"/>
+      <feBlend in="SourceGraphic" in2="texture" mode="soft-light"/>
+    </filter>
+  </defs>
+  <g transform="translate(22 25) scale(1.18)" stroke="#17233C" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M52 44C39 31 8 32 8 49C8 66 53 59 53 78C53 96 19 101 5 87M83 8V96M127 38L85 72M105 59L132 96M160 42V96M195 8V96M229 8V96"/><circle cx="160" cy="17" r="7" fill="#17233C" stroke="none"/>
+    <path d="M340 68C314 28 272 30 272 67C272 105 314 108 340 68C366 28 408 30 408 67C408 105 366 108 340 68Z" stroke="url(#exchange)" filter="url(#satin)"/>
+    <path d="M445 43V128M445 50C468 29 506 35 506 68C506 101 468 106 445 86"/>
+  </g>
+  <rect x="662" y="67" width="133" height="51" rx="10" stroke="#526FB4" stroke-width="2"/>
+  <g transform="translate(678 82)" stroke="#526FB4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0H17L0 20H17M32 0C21 0 21 20 32 20C43 20 43 0 32 0ZM51 20V0L68 20V0M95 0H78V20H95M78 10H91"/></g>
+</svg>

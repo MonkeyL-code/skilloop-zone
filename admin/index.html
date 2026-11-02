@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skilloop Zone · 内容管理后台</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="refinements.css">
+  <link rel="stylesheet" href="confirmed.css">
+  <link rel="stylesheet" href="rich-editor.css">
+  <link rel="stylesheet" href="skilloop.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <div class="brand" aria-label="Skilloop Zone 内容管理后台"><div class="brand-wordmark"><strong>Skilloop Zone</strong></div></div>
+      <div class="nav-group-label">内容管理</div>
+      <nav>
+        <button class="nav-item active" data-page="operations"><span class="nav-icon" data-icon="newspaper"></span>运营管理</button>
+        <button class="nav-item" data-page="agent"><span class="nav-icon" data-icon="pen"></span>内容创作<span class="nav-new-count" data-new-count="agent" hidden></span></button>
+        <button class="nav-item" data-page="materials"><span class="nav-icon" data-icon="library"></span>素材库<span class="nav-new-count" data-new-count="materials" hidden></span></button>
+      </nav>
+      <div class="nav-group-label settings-label">站点管理</div>
+      <button class="nav-item" id="settings-toggle" aria-expanded="false" aria-controls="settings-children"><span class="nav-icon" data-icon="settings"></span>站点配置<span class="chevron" data-icon="chevron"></span></button>
+      <nav class="subnav" id="settings-children" hidden>
+        <button class="nav-item" data-page="seo">SEO</button>
+        <button class="nav-item" data-page="cookie">Cookie</button>
+        <button class="nav-item" data-page="privacy">隐私与安全</button>
+      </nav>
+      <button class="nav-item" data-page="config"><span class="nav-icon" data-icon="rules"></span>规则管理</button>
+
+    </aside>
+    <div class="main-shell">
+      <header class="header">
+        <div class="breadcrumb">内容工作空间<span>/</span><strong id="header-current">运营管理</strong></div>
+        <a class="front-link" href="../#frontier">返回前台 ↗</a><span class="demo-label">后台演示</span><div class="user-area"><span class="avatar" id="current-avatar">—</span><span id="current-user">未登录</span><div class="header-menu"><button id="header-menu-toggle" class="header-menu-toggle" type="button" aria-label="打开账号与设置菜单" aria-expanded="false" aria-controls="header-menu-panel"><span data-icon="menu"></span></button><div id="header-menu-panel" class="header-menu-panel" hidden><button type="button" data-act="account"><span data-icon="user"></span>账号菜单</button><button type="button" data-act="header-settings"><span data-icon="settings"></span>设置</button><button class="menu-language" type="button" disabled aria-label="语言设置：简体中文，暂未开放"><span data-icon="globe"></span> 简体中文 / English</button><div class="header-menu-separator"></div><button type="button" data-act="logout"><span data-icon="logout"></span>退出登录</button></div></div></div>
+      </header>
+      <div class="page-tabs" id="page-tabs" aria-label="已打开页面"></div>
+      <main id="workspace">
+        <div id="connection-state" class="service-state" role="status" hidden></div>
+        <section class="page" id="view-operations">
+          <div class="page-heading"><div><h1>运营管理</h1></div><div class="heading-actions"><button class="button" data-act="reload-posts"><span data-icon="refresh"></span> 刷新</button><button class="button" data-act="toggle-op-filters" aria-expanded="true">收起筛选</button><button class="button primary" data-act="new-content"><span data-icon="plus"></span> 新建内容</button></div></div>
+          <div class="operations-frame">
+            <div class="status-tabs" role="tablist" aria-label="文章发布状态">
+              <button role="tab" id="tab-draft" data-act="op-tab" data-id="draft">待发布 <span id="draft-count"></span></button>
+              <button role="tab" id="tab-published" data-act="op-tab" data-id="published">已发布 <span id="published-count"></span></button>
+            </div>
+            <div id="panel-draft" class="op-panel" role="tabpanel" aria-labelledby="tab-draft" hidden></div>
+            <div id="panel-published" class="op-panel" role="tabpanel" aria-labelledby="tab-published"></div>
+          </div>
+        </section>
+        <section class="page agent-page" id="view-agent" hidden>
+          <div class="page-heading compact"><div><h1>内容创作</h1></div></div>
+          <div class="creation-tabs" role="tablist" aria-label="创作栏目"><button role="tab" data-act="creation-mode" data-id="前沿资讯" aria-selected="true">前沿资讯<span class="creation-new-count" data-creation-new="前沿资讯" hidden></span></button><button role="tab" data-act="creation-mode" data-id="灵感摘录" aria-selected="false">灵感摘录<span class="creation-new-count" data-creation-new="灵感摘录" hidden></span></button></div>
+          <div class="agent-workspace">
+            <aside class="agent-left" aria-label="待审稿列表">
+              <form class="agent-filters" id="agent-filter"></form>
+              <div class="agent-cards" id="agent-cards"></div>
+            </aside>
+            <section class="agent-right" aria-label="稿件预览"><div class="article-top" id="agent-article-top"></div><div class="article-scroll" id="agent-article-scroll"></div></section>
+          </div>
+        </section>
+        <section class="page" id="view-materials" hidden>
+          <div class="page-heading"><div><h1>素材库</h1></div></div>
+          <div id="material-content"></div>
+        </section>
+        <section class="page" id="view-config" hidden></section>
+        <section class="page" id="view-placeholder" hidden></section>
+      </main>
+    </div>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="demo-runtime.js"></script>
+</body>
+</html>

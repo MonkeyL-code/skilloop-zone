@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="160" viewBox="0 0 192 160" fill="none" role="img" aria-labelledby="title"><title id="title">Skilloop Zone</title>
+  <defs>
+    <linearGradient id="exchange" gradientUnits="userSpaceOnUse" x1="20" y1="50" x2="173" y2="108">
+      <stop stop-color="#3D67DC"/><stop offset=".36" stop-color="#7F86CF"/><stop offset=".65" stop-color="#C59CB8"/><stop offset="1" stop-color="#EF9870"/>
+    </linearGradient>
+    <filter id="satin" x="-8%" y="-15%" width="116%" height="130%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" seed="17" result="grain"/>
+      <feColorMatrix in="grain" type="saturate" values="0" result="grey"/>
+      <feComponentTransfer in="grey" result="veil"><feFuncA type="linear" slope=".16"/></feComponentTransfer>
+      <feComposite in="veil" in2="SourceGraphic" operator="in" result="texture"/>
+      <feBlend in="SourceGraphic" in2="texture" mode="soft-light"/>
+    </filter>
+  </defs>
+  <path d="M96 80C69 38 25 39 25 80C25 121 69 122 96 80C123 38 167 39 167 80C167 121 123 122 96 80Z" stroke="url(#exchange)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" filter="url(#satin)"/>
+</svg>

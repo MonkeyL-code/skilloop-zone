@@ -1,0 +1,63 @@
+.rich-toolbar{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:5px 7px;background:#f8fafc;border-bottom:1px solid #dce3ee;flex:none}
+.rich-toolbar-row{display:flex;align-items:center;flex-wrap:wrap;gap:3px;min-width:0;padding:2px 0}
+.rich-toolbar-row+.rich-toolbar-row{border-top:1px solid #e9edf4;margin-top:3px;padding-top:5px}
+.rich-tool-group{display:flex;align-items:center;gap:2px;border-right:1px solid #dde4ef;padding:0 5px 0 0;margin-right:2px;flex:none;min-width:0}
+.rich-tool-group:last-child{border-right:0;margin-right:0;padding-right:0}
+.rich-toolbar button{width:28px;min-width:28px;height:29px;border:1px solid transparent;border-radius:4px;color:#586b85;padding:5px;transition:background .12s,color .12s}
+.rich-toolbar button .ui-icon{width:17px;height:17px;vertical-align:middle}
+.rich-toolbar button:hover:not(:disabled){color:#315bdb;background:#eaf0ff}
+.rich-toolbar button[aria-pressed=true]{color:#315bdb;background:#e6edff;border-color:#c9d7f7}
+.rich-toolbar button:disabled{color:#a4afbf;opacity:.45;cursor:default}
+.rich-toolbar select{height:29px;max-width:114px;padding:3px 17px 3px 6px;border:1px solid transparent;border-radius:4px;background:transparent;color:#52627a;font-size:11px;cursor:pointer}
+.rich-toolbar select:hover,.rich-toolbar select:focus{border-color:#d4deef;background:white}
+.rich-toolbar [data-rich-select=block]{width:76px}
+.rich-toolbar [data-rich-select=fontFamily]{width:104px}
+.rich-toolbar [data-rich-select=fontSize]{width:68px}
+.rich-toolbar [data-rich-select=lineHeight]{width:89px}
+.rich-color{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:30px;height:29px;border:1px solid transparent;border-radius:4px;color:#586b85;cursor:pointer;overflow:hidden}
+.rich-color:hover{background:#eaf0ff;border-color:#d4deef}
+.rich-color .ui-icon{width:16px;height:16px;margin-top:-3px}
+.rich-color input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;padding:0;border:0}
+.rich-color::after{content:'';height:3px;width:17px;background:var(--swatch,#52627a);border-radius:1px;position:absolute;bottom:2px;pointer-events:none}
+.rich-color:has([data-rich-color=backgroundColor])::after{background:var(--swatch,#fff0a8)}
+.rich-color:focus-within{outline:2px solid #315bdb;outline-offset:1px}
+.rich-view-tools{margin-left:auto}
+.rich-tool-status{font-size:11px;color:#315bdb;background:#edf3ff;padding:6px 9px;margin-top:4px;border-radius:3px;line-height:1.6}
+.rich-box.is-fullscreen{position:fixed;inset:0;z-index:2;border-radius:0;border:0;width:100%;height:100dvh;max-height:none}
+.rich-box.is-fullscreen .rich-toolbar{padding:8px max(16px,calc((100vw - 1040px)/2));background:#f8fafc}
+.rich-box.is-fullscreen .rich-content{padding:30px max(24px,calc((100vw - 900px)/2));background:white}
+.rich-content{white-space:pre-wrap;overflow-wrap:anywhere;caret-color:#315bdb}
+.rich-content:focus{box-shadow:inset 0 0 0 1px #dce6fb}
+.rich-content h1{font-size:28px}.rich-content h4{font-size:15px}.rich-content h5{font-size:14px}.rich-content h6{font-size:13px}
+.rich-content figure,.article-body figure{margin:20px 0;max-width:100%}
+.rich-content figure img,.rich-content video,.article-body video{display:block;max-width:100%;height:auto;border-radius:5px}
+.rich-content video,.article-body video{width:100%;background:#142238;max-height:65vh}
+.rich-content figcaption,.article-body figcaption{color:#8290a6;text-align:center;font-size:12px;margin:8px 0;line-height:1.6}
+.rich-content pre,.article-body pre{white-space:pre;overflow:auto;padding:16px 18px;background:#f3f6fa;border:1px solid #e0e7f0;border-radius:5px;line-height:1.7;tab-size:2}
+.rich-content pre code,.article-body pre code{font:13px/1.7 Consolas,"SFMono-Regular",monospace;color:#334967}
+.rich-content hr,.article-body hr{border:0;border-top:1px solid #cfd9e8;margin:24px 0}
+.rich-content.format-painting,.format-painting .rich-content{cursor:copy}
+.rich-insert-form{display:flex;flex-direction:column;gap:10px}
+.rich-insert-form label{font-size:12px;color:#60718b}
+.rich-insert-form input,.rich-insert-form textarea{width:100%;font-size:13px}
+.rich-insert-form textarea{font-family:Consolas,monospace;line-height:1.7;min-height:180px;resize:vertical}
+.rich-insert-hint{color:#8492a7;font-size:12px;margin:0;line-height:1.7}
+@media(max-width:700px){.rich-toolbar{padding:4px}.rich-tool-group{padding-right:3px;margin-right:0}.rich-toolbar select{max-width:95px}.rich-box.is-fullscreen .rich-toolbar{padding:5px}.rich-box.is-fullscreen .rich-content{padding:20px}.rich-toolbar-row{gap:4px}}
+@media(prefers-reduced-motion:reduce){.rich-toolbar button{transition:none}}
+.modal.editor .editor-grid{grid-template-columns:minmax(0,65fr) minmax(200px,20fr) minmax(165px,15fr);gap:12px;padding:12px}
+.modal.editor .editor-main,.modal.editor .editor-settings,.modal.editor .editor-publish{min-width:0}
+.modal.editor .editor-settings,.modal.editor .editor-publish{overflow-y:auto}
+.modal.editor .editor-publish{display:block;grid-column:auto}
+.modal.editor .editor-publish .editor-field{border-right:0;border-bottom:1px solid var(--line)}
+.modal.editor .editor-field{padding:12px}
+.editor-record{border-top:1px solid #e1e7f0}
+.editor-record>summary{font-size:12px;font-weight:600;color:#5c6f8a;cursor:pointer;padding:12px}
+.editor-record .editor-origin{font-size:11px}
+.editor-footer-left{min-width:0;gap:10px;flex-wrap:wrap}
+.editor-status{white-space:nowrap;color:#896a32}
+.editor-status:before{width:7px;height:7px;background:#d5a13b;box-shadow:0 0 0 3px #f9f0dc}
+.editor-status[data-state=saved]{color:#3c7d60}
+.editor-status[data-state=saved]:before{background:#39a36b;box-shadow:0 0 0 3px #e7f5ec}
+#editor-save-error{font-size:11px;color:#a56b29;max-width:360px;line-height:1.5}
+@media(max-width:1050px){.modal.editor .editor-grid{grid-template-columns:minmax(0,1fr) 215px}.modal.editor .editor-main{grid-row:1/3;min-height:0}.modal.editor .editor-settings,.modal.editor .editor-publish{grid-column:2;max-height:none}.modal.editor .editor-publish{grid-row:2}.modal.editor .editor-grid{grid-template-rows:minmax(0,1fr) minmax(160px,.7fr)}}
+@media(max-width:700px){.modal.editor .editor-grid{display:flex;flex-direction:column;overflow:auto}.modal.editor .editor-main{min-height:520px;flex:none}.modal.editor .editor-settings,.modal.editor .editor-publish{overflow:visible;flex:none}.editor-footer-left{flex-basis:100%}}
