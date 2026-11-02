@@ -7,17 +7,116 @@ export const domains = [
 ];
 
 export const articles = [
-  { id: 'seedance', slug: 'seedance', domain: 'ai', title: 'Seedance 影像展示：镜头运动与画面连贯性', subtitle: '观察宣传片中的运镜、场景衔接与人物动作。', enTitle: 'Seedance: camera movement and visual continuity', enSummary: 'Observations on camera movement and visual continuity.', type: 'video', readTime: '4 分钟', author: 'Skilloop 编辑部', date: '2026-11-02', tag: '本期焦点', cover: 'assets/editorial/motion.svg', related: ['Python', 'Photoshop'],
-    body: '<p class="lead">从镜头运动、场景衔接和主体动作，观察 Seedance 影像的连贯性。</p><h2>镜头与动作</h2><p>固定镜头、跟随镜头与镜头切换，会带来不同的观看感受。主体的运动方向、画面中的光线与遮挡关系，也是观察连续性的切入点。</p><h2>画面与声音</h2><p>留意动作节奏、音效与音乐之间的配合，讨论哪些片段自然，哪些地方还需要调整。</p>',
-    enBody: '<p>Observe Seedance footage through camera movement, subject motion and scene transitions.</p><h2>Movement and continuity</h2><p>Look at lighting, occlusion and the relationship between motion and sound.</p>' },
-  { id: 'own-light', slug: 'own-light', domain: 'visual', title: '摄影作品观察：曝光、色彩与后期处理', subtitle: '对照照片的原始画面与后期版本，观察处理方式。', enTitle: 'Photography: exposure, colour and post-processing', enSummary: 'Looking at colour, light and the photographs we bring home.', type: 'article', readTime: '3 分钟', author: '视觉观察室', date: '2026-11-01', tag: '视觉笔记', cover: 'assets/editorial/light.svg', related: ['Photoshop', '摄影'],
-    body: '<p class="lead">从曝光、白平衡和色彩入手，对照摄影原图与后期处理结果。</p><h2>曝光与细节</h2><p>在相同裁切范围下比较高光、暗部与主体细节，区分拍摄光线和后期调整带来的变化。</p><h2>色彩取舍</h2><p>观察肤色、天空与环境色之间的关系，保留自己希望呈现的画面氛围。</p>', enBody: '<p>Compare exposure, white balance and colour before and after editing.</p><h2>Light and detail</h2><p>Use the same crop to observe highlights, shadows and the treatment of the subject.</p>' },
-  { id: 'fingerstyle', slug: 'fingerstyle', domain: 'music', title: '吉他指弹：旋律、低音与节奏的配合', subtitle: '一段演奏的结构与收音观察。', enTitle: 'Fingerstyle guitar: melody, bass and rhythm', enSummary: 'Melody, rhythm and recording in fingerstyle guitar.', type: 'audio', readTime: '2 分钟', author: '声音收集站', date: '2026-11-01', tag: '听见新声', cover: 'assets/editorial/sound.svg', related: ['吉他', '音频剪辑'],
-    body: '<p class="lead">一段指弹演奏中，旋律、低音和节奏如何配合？</p><h2>听见不同声部</h2><p>留意旋律与伴奏的呼应，以及停顿、拍弦和泛音在段落中的作用。</p><h2>收音与环境</h2><p>环境声、麦克风位置与演奏力度都会影响录音。可以分别听一段环境声和一段琴声，再比较差异。</p>', enBody: '<p>Listen to melody, bass and rhythm in a fingerstyle performance.</p><h2>Recording</h2><p>Compare room noise and the recorded instrument to understand the effect of microphone placement.</p>' },
-  { id: 'words', slug: 'words', domain: 'language', title: '表达观察：如何组织一次简短的自我介绍', subtitle: '从对话片段观察信息顺序、语速与日常表达。', enTitle: 'Speaking: structuring a short self-introduction', enSummary: 'Finding a personal voice through everyday conversation.', type: 'article', readTime: '3 分钟', author: '表达之间', date: '2026-10-31', tag: '另一种视角', cover: 'assets/editorial/words.svg', related: ['英语口语', '中文表达'],
-    body: '<p class="lead">一次简短的自我介绍，需要让对方记住哪些信息？</p><h2>信息顺序</h2><p>从个人背景到具体经历，观察每一段信息是否有清楚的衔接。选一件能够展开的小事，通常比堆叠标签更容易交流。</p><h2>语速与停顿</h2><p>留出自然的停顿，让听者跟上话题。表达可以简洁，也可以保留自己的口音和说话习惯。</p>', enBody: '<p>Choose the key details for a short self-introduction.</p><h2>Structure and pace</h2><p>Use a concrete experience and natural pauses to make the story easy to follow.</p>' },
-  { id: 'hands', slug: 'hands', domain: 'life', title: '手作记录：从材料到成品的制作过程', subtitle: '关注材料选择、操作步骤与成品细节。', enTitle: 'Craft: materials, process and the finished object', enSummary: 'Small creative moments with wood, flour and everyday materials.', type: 'article', readTime: '3 分钟', author: '日常造物', date: '2026-10-30', tag: '生活新作', cover: 'assets/editorial/craft.svg', related: ['烘焙', '木作'],
-    body: '<p class="lead">从材料准备到成品整理，记录一件手作的制作过程。</p><h2>材料与步骤</h2><p>关注材料的尺寸、纹理和连接方式。先做小范围试验，再决定后续加工方式。</p><h2>成品细节</h2><p>在相同光线下比较边缘、接合与表面处理，记录下一次希望改进的地方。</p>', enBody: '<p>Follow a handmade object from materials to the finished piece.</p><h2>Process and details</h2><p>Observe joining, edges and surface treatment, and keep a record for the next attempt.</p>' }
+  {
+    "id": "seedance",
+    "slug": "seedance",
+    "domain": "ai",
+    "title": "Seedance 2.5：30 秒，让故事更完整",
+    "subtitle": "更长叙事、精准参考与视频编辑，新一代模型的创作变化。",
+    "enTitle": "Seedance 2.5: more room for a story",
+    "enSummary": "Longer stories, finer references and more control over video editing.",
+    "type": "article",
+    "readTime": "2 分钟",
+    "author": "字节跳动 Seed",
+    "date": "2026-11-03",
+    "tag": "本期焦点",
+    "cover": "assets/editorial/seedance-2-5.webp",
+    "related": [
+      "Python",
+      "Photoshop"
+    ],
+    "sourceUrl": "https://seed.bytedance.com/zh/seedance2_5",
+    "body": "<p class=\"lead\">一个镜头之外，故事还能走多远？Seedance 2.5 把单段视频生成时长提升到 30 秒，让创作拥有更完整的起承转合。</p><h2>从一个片段，到一段叙事</h2><p>根据官方介绍，模型支持两次视频延长，并进一步改善运动稳定性和画面真实感。对于需要连续动作、情绪变化和场景衔接的作品，更长的时长也意味着创作者有空间安排节奏，而不只是展示一个瞬间。</p><h2>参考不只复刻动作</h2><p>这次更新也强调对参考视频意图和镜头语言的理解，以及更精细的音视频编辑。白模控制、绿幕编辑等能力，则为专业流程增加了新的入口。封面中的熊猫来自官网生成案例：柔和的林间光线、毛发细节与环境层次，让人愿意停下来多看一眼。</p><p class=\"article-source\">转载摘编：<a href=\"https://seed.bytedance.com/zh/seedance2_5\">字节跳动 Seed 中文官网 · 阅读原文 ↗</a><br>图片：Seedance 2.5 官方生成案例画面，字节跳动 Seed</p>",
+    "enBody": "<p>Seedance 2.5 extends single video generations to 30 seconds and supports two extensions. Its official presentation highlights more stable motion, finer reference control, video editing, white-model control and green-screen editing.</p><p>The cover is a still from an official generated example.</p><p class=\"article-source\">转载摘编：<a href=\"https://seed.bytedance.com/zh/seedance2_5\">ByteDance Seed · 阅读原文 ↗</a><br>图片：ByteDance Seed, official Seedance 2.5 generated example</p>"
+  },
+  {
+    "id": "own-light",
+    "slug": "own-light",
+    "domain": "visual",
+    "title": "2026 索尼摄影大赛：风光里的另一种观看",
+    "subtitle": "从纳米比亚沙丘到红外森林，欣赏风光类获奖与入围作品。",
+    "enTitle": "Landscapes through a different lens",
+    "enSummary": "Selected landscape photographs from the 2026 Sony World Photography Awards.",
+    "type": "article",
+    "readTime": "2 分钟",
+    "author": "中国摄影网 · 澎湃号",
+    "date": "2026-03-03",
+    "tag": "视觉与影像",
+    "cover": "assets/editorial/landscape.webp",
+    "related": [
+      "摄影",
+      "Photoshop"
+    ],
+    "sourceUrl": "https://www.thepaper.cn/newsDetail_forward_32680936",
+    "body": "<p class=\"lead\">同样是山川、湖泊与树林，摄影师却能让熟悉的自然呈现出不同的性格。2026 年索尼世界摄影大赛公开组风光类作品，提供了一组丰富的观看入口。</p><h2>光线把沙丘变成画布</h2><p>美国摄影师 J Fritz Rumpf 的冠军作品《沙漠的形态与纹理》，记录了纳米比亚索苏斯维利沙丘的清晨。蜜桃色沙面、深色阴影与一小片绿色彼此交错，地貌的纹理因此有了近乎绘画的秩序。</p><h2>风景，也可以超出肉眼</h2><p>入围作品里，Matteo Redaelli 用红外摄影让特内里费岛的松林变为白色；另一些创作者把镜头转向冰层下的气泡、雾中的树与湖面倒影。它们并不急于交代一个地点，而是先让人感受到温度、时间与空间。</p><p class=\"article-source\">转载摘编：<a href=\"https://www.thepaper.cn/newsDetail_forward_32680936\">中国摄影网／澎湃号·湃客 · 阅读原文 ↗</a><br>图片：《沙漠的形态与纹理》© J Fritz Rumpf，原文配图</p>",
+    "enBody": "<p>J Fritz Rumpf won the landscape category of the 2026 Sony World Photography Awards Open competition with Shapes and Patterns of the Desert. The photograph combines pastel dunes, dark shadows and green vegetation in Namibia.</p><p class=\"article-source\">转载摘编：<a href=\"https://www.thepaper.cn/newsDetail_forward_32680936\">The Paper / China Photography · 阅读原文 ↗</a><br>图片：© J Fritz Rumpf</p>"
+  },
+  {
+    "id": "fingerstyle",
+    "slug": "fingerstyle",
+    "domain": "music",
+    "title": "许绮娟《小天使》：把生活写进六根弦",
+    "subtitle": "十年创作、四年制作，一张结合指弹吉他与手绘的原创专辑。",
+    "enTitle": "Little Angel: life stories on six strings",
+    "enSummary": "A new fingerstyle guitar album by Chijuan Hsu, paired with original illustrations.",
+    "type": "article",
+    "readTime": "2 分钟",
+    "author": "风潮音乐 Wind Music",
+    "date": "2026-10-28",
+    "tag": "音乐与声音",
+    "cover": "assets/editorial/guitar.webp",
+    "related": [
+      "吉他",
+      "音频剪辑"
+    ],
+    "sourceUrl": "https://vocus.cc/article/6ae1660afd89780001bbc7e0",
+    "body": "<p class=\"lead\">音乐不一定从宏大的主题开始，也可能来自一次告别、一个陪伴多年的玩偶，或生活里一句被记住的话。</p><h2>九首作品，慢慢长成一张专辑</h2><p>指弹吉他音乐家许绮娟在 2026 年 10 月 28 日推出《小天使 Little Angel》。这张专辑经历十年创作与四年制作，收录九首原创音乐，由她完成作曲、编曲、演奏、混音及母带制作，并演绎二十种乐器。</p><h2>声音之外，还有可以翻阅的画面</h2><p>专辑以指弹吉他为核心，加入世界乐器与自然声景；部分旋律也从她参与电影配乐时的创作延伸而来。她另外绘制了二十张原创牌卡，让听众在声音之外，透过图画和文字走近这些作品。封面的原型，则是陪伴她三十多年的玩偶“小白”。</p><p class=\"article-source\">转载摘编：<a href=\"https://vocus.cc/article/6ae1660afd89780001bbc7e0\">风潮音乐 Wind Music／方格子 · 阅读原文 ↗</a><br>图片：风潮音乐提供</p>",
+    "enBody": "<p>Fingerstyle guitarist Chijuan Hsu released Little Angel on October 28, 2026. The album features nine original compositions, twenty instruments and twenty illustrated cards, bringing together music and personal memories.</p><p class=\"article-source\">转载摘编：<a href=\"https://vocus.cc/article/6ae1660afd89780001bbc7e0\">Wind Music / vocus · 阅读原文 ↗</a><br>图片：Wind Music</p>"
+  },
+  {
+    "id": "words",
+    "slug": "words",
+    "domain": "language",
+    "title": "Skibidi、Delulu：网络热词走进剑桥词典",
+    "subtitle": "从玩笑到日常表达，互联网正在留下自己的语言痕迹。",
+    "enTitle": "Internet slang enters the dictionary",
+    "enSummary": "Skibidi and delulu are among thousands of additions to the Cambridge Dictionary.",
+    "type": "article",
+    "readTime": "2 分钟",
+    "author": "扬子晚报 · 紫牛新闻",
+    "date": "2025-08-19",
+    "tag": "语言与表达",
+    "cover": "assets/editorial/words-real.webp",
+    "related": [
+      "英语口语",
+      "中文表达"
+    ],
+    "sourceUrl": "https://www.yzwb.net/news/txs/202508/t20250819_252151.html",
+    "body": "<p class=\"lead\">一个词要被使用多少次，才会从弹幕、评论区和朋友间的玩笑，走进一本正式词典？</p><h2>六千多个新词里的网络生活</h2><p>据紫牛新闻报道，剑桥词典在 2025 年新增 6212 个词汇、短语及释义。“Skibidi”可以表示酷、糟糕，也可以只是没有明确意思的玩笑；“delulu”来自 delusional，用来描述选择相信不真实事物的状态。</p><h2>变化的不只是流行梗</h2><p>新词里也有反映工作方式的表达：mouse jiggler 指让电脑看起来仍在使用的设备或软件，work spouse 则描述职场中彼此信任、互相支持的伙伴。词典编撰者关注的并非一时热度，而是这些表达能否持续出现在真实交流中。语言的变化，也就成了观察生活变化的一个窗口。</p><p class=\"article-source\">转载摘编：<a href=\"https://www.yzwb.net/news/txs/202508/t20250819_252151.html\">扬子晚报·紫牛新闻 · 阅读原文 ↗</a><br>图片：紫牛新闻原文配图</p>",
+    "enBody": "<p>Cambridge Dictionary added 6,212 words, phrases and meanings in 2025, including skibidi and delulu. Other additions such as mouse jiggler and work spouse reflect changing work habits and relationships.</p><p class=\"article-source\">转载摘编：<a href=\"https://www.yzwb.net/news/txs/202508/t20250819_252151.html\">Yangtze Evening News / Ziniu News · 阅读原文 ↗</a><br>图片：Original article image</p>"
+  },
+  {
+    "id": "hands",
+    "slug": "hands",
+    "domain": "life",
+    "title": "罗意威工艺奖：纸与陶瓷之间的新可能",
+    "subtitle": "Jongjin Park 的《幻影地层》，让柔软与坚固相遇。",
+    "enTitle": "Between paper and porcelain",
+    "enSummary": "Jongjin Park wins the 2026 LOEWE FOUNDATION Craft Prize with Strata of Illusion.",
+    "type": "article",
+    "readTime": "2 分钟",
+    "author": "LOEWE FOUNDATION",
+    "date": "2026-05-12",
+    "tag": "生活与手作",
+    "cover": "assets/editorial/craft-real.webp",
+    "related": [
+      "陶艺",
+      "手作"
+    ],
+    "sourceUrl": "https://craftprize.loewe.com/zh/craftprize2026",
+    "body": "<p class=\"lead\">纸张是轻薄的，陶瓷是坚固的。把两种材料放在一起，会得到一个怎样的物件？</p><h2>一件向内倾斜的作品</h2><p>2026 年罗意威基金会工艺奖在新加坡举行。韩国艺术家 Jongjin Park 凭借《Strata of Illusion》（《幻影地层》，2025）获得大奖。作品将纸与陶瓷泥浆结合，层叠的结构在烧制后呈现出近似地层的纹理，边缘又保留着向内倾斜的动态。</p><h2>材料的边界，也可以重新想象</h2><p>本届特别奖同时授予 Baba Tree Master Weavers 与 Álvaro Catalán de Ocón 合作的《Frafra Tapestry》，以及 Graziano Visintin 的《Collier》。编织、陶瓷和金属在这里既是传统技艺的延续，也是新的表达方式：日常材料经过人的双手，显露出另一种可能。</p><p class=\"article-source\">转载摘编：<a href=\"https://craftprize.loewe.com/zh/craftprize2026\">LOEWE 罗意威基金会中文官网 · 阅读原文 ↗</a><br>图片：LOEWE FOUNDATION，艺术家与获奖作品；制作过程参考<a href=\"https://www.zaobao.com.sg/lifestyle/design-decor/story20260524-9060503\">联合早报报道</a></p>",
+    "enBody": "<p>Jongjin Park won the 2026 LOEWE FOUNDATION Craft Prize for Strata of Illusion, a work combining paper and porcelain slip. Special mentions went to Frafra Tapestry and Collier.</p><p class=\"article-source\">转载摘编：<a href=\"https://craftprize.loewe.com/zh/craftprize2026\">LOEWE FOUNDATION · 阅读原文 ↗</a><br>图片：LOEWE FOUNDATION</p>"
+  }
 ];
 
 export const members = [

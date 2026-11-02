@@ -7,16 +7,16 @@ const uuid = () => crypto.randomUUID();
 const source = root => new URL('../' + root, location.href).href;
 const initial = articles.map((a, index) => {
   const at = new Date(a.date + 'T08:00:00+08:00').toISOString();
-  const post = { id: 'article-' + a.id, postNumber: index + 1, title: a.title, body: a.body, enTitle: a.enTitle, enBody: a.enBody, enSummary: a.enSummary, bodyFormat: 'html', summary: a.subtitle, channel: '前沿资讯', category: domains.find(d => d.id === a.domain).name, type: 'article', mediaKind: a.type, origin: 'derived', byline: a.author, publisher: a.author, slug: a.slug, cover: source(a.cover), videoUrl: '', sourceUrl: '', tags: a.related.join(','), featured: index === 0, state: 'published', draftState: '未发布', createdAt: at, firstCreatedAt: at, enteredAt: at, publishedAt: at, materialIds: ['material-' + a.id], sourceAgentId: 'original-' + a.id, history: [], likes: null, shares: null, saves: null, comments: null, basisState: 'none', reviewStatus: 'draft' };
+  const post = { id: 'article-' + a.id, postNumber: index + 1, title: a.title, body: a.body, enTitle: a.enTitle, enBody: a.enBody, enSummary: a.enSummary, bodyFormat: 'html', summary: a.subtitle, channel: '前沿资讯', category: domains.find(d => d.id === a.domain).name, type: 'article', mediaKind: a.type, origin: 'derived', byline: a.author, publisher: a.author, slug: a.slug, cover: source(a.cover), videoUrl: '', sourceUrl: a.sourceUrl || '', tags: a.related.join(','), featured: index === 0, state: 'published', draftState: '未发布', createdAt: at, firstCreatedAt: at, enteredAt: at, publishedAt: at, materialIds: ['material-' + a.id], sourceAgentId: 'original-' + a.id, history: [], likes: null, shares: null, saves: null, comments: null, basisState: 'none', reviewStatus: 'draft' };
   post.publishedSnapshot = copy(post); return post;
 });
 let records;
-try { const saved = JSON.parse(localStorage.getItem(CONTENT_KEY)); records = Array.isArray(saved) ? refreshEditorialSeeds(saved, articles) : initial; } catch { records = initial; }
+try { const saved = JSON.parse(localStorage.getItem(CONTENT_KEY)); records = Array.isArray(saved) ? refreshEditorialSeeds(saved, articles.map(a=>({...a,cover:source(a.cover)}))) : initial; } catch { records = initial; }
 function persist(next) { localStorage.setItem(CONTENT_KEY, JSON.stringify(next)); records = next; }
 if (!localStorage.getItem(CONTENT_KEY)) persist(records);
 const catalog = [{ id: 'owner', name: '提供的素材', sources: [{ id: 'supplied', name: '用户提供', url: '#', kind: 'local' }] }, { id: 'editorial', name: '编辑整理', sources: [{ id: 'editorial', name: '社区编辑部', url: '#', kind: 'local' }] }];
 window.SOURCE_CATALOG = { groups: catalog };
-const materials = articles.map((a, index) => ({ id: 'material-' + a.id, title: a.title, summary: a.subtitle, body: a.body, bodyFormat: 'html', sourceId: index ? 'editorial' : 'supplied', source: index ? '社区编辑部' : '用户提供', type: a.type === 'video' ? 'video' : 'article', collectedAt: a.date + 'T08:00:00+08:00', url: '', videoUrl: '', score1: null, score2: null, isNew: false, category: domains.find(d => d.id === a.domain).name }));
+const materials = articles.map((a, index) => ({ id: 'material-' + a.id, title: a.title, summary: a.subtitle, body: a.body, bodyFormat: 'html', sourceId: 'editorial', source: a.author, type: a.type === 'video' ? 'video' : 'article', collectedAt: a.date + 'T08:00:00+08:00', url: a.sourceUrl || '', videoUrl: '', score1: null, score2: null, isNew: false, category: domains.find(d => d.id === a.domain).name }));
 const agents = articles.map(a => ({ id: 'original-' + a.id, title: a.title, summary: a.subtitle, body: a.body, enTitle: a.enTitle, enBody: a.enBody, bodyFormat: 'html', category: domains.find(d => d.id === a.domain).name, generatedAt: a.date + 'T08:00:00+08:00', materialIds: ['material-' + a.id], isNew: false }));
 window.AdminRuntime = {
   initialData: { materials, agents, posts: copy(records) }, canCreate: true, canDelete: true,
