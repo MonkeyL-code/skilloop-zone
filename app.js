@@ -83,7 +83,7 @@ function sanitize(body = '') {
 }
 function renderHeader() {
   const active = route === 'article' ? 'frontier' : ['profile', 'tasks', 'topic'].includes(route) ? 'exchange' : ['order', 'me'].includes(route) ? 'me' : route;
-  const nav = [['exchange', '技能互助'], ['frontier', '前沿资讯'], ['activities', '同好活动'], ['me', '我的']];
+  const nav = [['frontier', '前沿资讯'], ['exchange', '技能互助'], ['activities', '同好活动'], ['me', '我的']];
   const links = nav.map(([path, name]) => `<a href="#${path}" class="${active === path ? 'active' : ''}">${name}</a>`).join('');
   $('#site-header').innerHTML = `<div class="header-inner container"><a class="brand" href="#welcome" aria-label="Skilloop Zone 起始页"><img src="assets/brand/skilloop-wordmark.svg" alt="Skilloop Zone"></a><nav class="desktop-nav" aria-label="主导航">${links}</nav><div class="account-nav">${state.session ? `<a class="header-credit" href="#me?tab=points">${icon('coin')}${state.users.you.balance - state.users.you.reserved}</a><a href="#me" aria-label="我的技能卡">${avatar(state.users.you)}</a>` : '<button class="btn small" data-action="login">加入社区 '+icon('arrow')+'</button>'}</div></div><nav class="mobile-nav" aria-label="移动导航">${links}</nav>`;
 }
