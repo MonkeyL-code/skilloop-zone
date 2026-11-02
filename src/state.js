@@ -1,4 +1,5 @@
-import { members, activities } from './data.js';
+import { members, activities, domains } from './data.js';
+import { communityTopics } from './community-data.js';
 
 export function createDemoState() {
   return {
@@ -7,7 +8,7 @@ export function createDemoState() {
       you: { id: 'you', name: '小屿', initial: '屿', balance: 0, reserved: 0, verified: false, welcomed: false, completed: 0, offer: 'Python', offerLevel: 'P2', want: 'Photoshop', wantLevel: 'S2', bio: '想把自己的旅行照片修得更好一点。', slot: '周六 15:00', evidence: '自述', works: [] },
       ...Object.fromEntries(members.map(m => [m.id, { ...m, reserved: 0, verified: true }]))
     },
-    orders: [], ledger: [], bookmarks: [], follows: [], reports: [],
+    orders: [], ledger: [], bookmarks: [], follows: [], reports: [], topics: [], replies: {},
     activities: Object.fromEntries(activities.map(a => [a.id, { cap: a.cap, participants: [...a.participants] }]))
   };
 }
@@ -103,6 +104,22 @@ export function reduce(previous, action) {
       auth(); if (state.activities[action.id]) state.activities[action.id].participants = state.activities[action.id].participants.filter(id => id !== 'you'); break;
     case 'REPORT':
       auth(); state.reports.push({ target: requiredText(action.target, '对象'), reason: requiredText(action.reason, '举报原因'), at: stamp }); break;
+    case 'REPLY_TOPIC': {
+      auth();
+      need([...communityTopics, ...(state.topics || [])].some(t => t.id === action.id), '主题不存在。');
+      const body = requiredText(action.body, '回复', 2000);
+      state.replies ||= {}; state.replies[action.id] ||= [];
+      state.replies[action.id].push({ authorId:'you', body, at:stamp });
+      break;
+    }
+    case 'POST_TOPIC': {
+      verified(); need(domains.some(d => d.id === action.domain), '请选择领域。');
+      const title = requiredText(action.title, '标题', 100), body = requiredText(action.body, '具体需求', 2000);
+      const offer = requiredText(action.offer, '我能教的', 100), want = requiredText(action.want, '我想学的', 100);
+      state.topics ||= [];
+      state.topics.unshift({ id:`topic-${Date.now().toString(36)}-${state.topics.length}`, memberId:'you', domain:action.domain, title, body, offer, want, kind:'exchange', time:you.slot, label:'可互换', replies:[], at:stamp });
+      break;
+    }
     default: throw new Error('暂不支持这项操作。');
   }
   return state;

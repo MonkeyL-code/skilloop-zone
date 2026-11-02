@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
 import vm from 'node:vm';
 import { articles, domains } from '../src/data.js';
-import { transitionContent, CONTENT_KEY } from '../src/content.js';
+import { transitionContent, CONTENT_KEY, refreshEditorialSeeds } from '../src/content.js';
 
 test('reused admin can edit bilingual content, save privately, publish and withdraw', async () => {
   const html=await readFile(new URL('../admin/index.html',import.meta.url),'utf8');
@@ -13,7 +13,7 @@ test('reused admin can edit bilingual content, save privately, publish and withd
   w.structuredClone=structuredClone;w.matchMedia=()=>({matches:false});w.scrollTo=()=>{};w.CSS={escape:s=>s};
   const errors=[];w.addEventListener('error',e=>errors.push(e.error));
   const boot=(await readFile(new URL('../admin/demo-runtime.js',import.meta.url),'utf8')).replace(/^import[^\n]*\n/gm,'').split("for (const name of ['icons.js'")[0];
-  vm.runInContext(`(()=>{const articles=${JSON.stringify(articles)};const domains=${JSON.stringify(domains)};const CONTENT_KEY=${JSON.stringify(CONTENT_KEY)};const transitionContent=${transitionContent.toString()};\n${boot}\n})()`,d.getInternalVMContext());
+  vm.runInContext(`(()=>{const articles=${JSON.stringify(articles)};const domains=${JSON.stringify(domains)};const CONTENT_KEY=${JSON.stringify(CONTENT_KEY)};const transitionContent=${transitionContent.toString()};const refreshEditorialSeeds=${refreshEditorialSeeds.toString()};\n${boot}\n})()`,d.getInternalVMContext());
   for(const name of ['icons.js','rich-editor.js','autosave.js','content-safety.js','app.js','publication-checks.js','header-menu.js','demo-extras.js'])vm.runInContext(await readFile(new URL('../admin/'+name,import.meta.url),'utf8'),d.getInternalVMContext());
   const tick=()=>new Promise(resolve=>setTimeout(resolve,30));
   const click=selector=>{const el=w.document.querySelector(selector);assert.ok(el,selector);el.click();};

@@ -1,5 +1,5 @@
 import { articles, domains } from '../src/data.js';
-import { CONTENT_KEY, transitionContent } from '../src/content.js';
+import { CONTENT_KEY, transitionContent, refreshEditorialSeeds } from '../src/content.js';
 
 const copy = value => structuredClone(value);
 const now = () => new Date().toISOString();
@@ -11,7 +11,7 @@ const initial = articles.map((a, index) => {
   post.publishedSnapshot = copy(post); return post;
 });
 let records;
-try { const saved = JSON.parse(localStorage.getItem(CONTENT_KEY)); records = Array.isArray(saved) ? saved : initial; } catch { records = initial; }
+try { const saved = JSON.parse(localStorage.getItem(CONTENT_KEY)); records = Array.isArray(saved) ? refreshEditorialSeeds(saved, articles) : initial; } catch { records = initial; }
 function persist(next) { localStorage.setItem(CONTENT_KEY, JSON.stringify(next)); records = next; }
 if (!localStorage.getItem(CONTENT_KEY)) persist(records);
 const catalog = [{ id: 'owner', name: '提供的素材', sources: [{ id: 'supplied', name: '用户提供', url: '#', kind: 'local' }] }, { id: 'editorial', name: '编辑整理', sources: [{ id: 'editorial', name: '社区编辑部', url: '#', kind: 'local' }] }];

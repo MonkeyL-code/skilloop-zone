@@ -1,5 +1,17 @@
 export const CONTENT_KEY = 'skilloop.content.v1';
 
+export function refreshEditorialSeeds(records, articles) {
+  const legacy = new Set(['当想象，开始有了镜头语言','旅行结束后，留住自己的光','六根弦，也能撑起一个世界','换一种语言，讲自己的故事','让双手，做一点慢下来的事']);
+  return records.map(record => {
+    const current=articles.find(a=>record.id==='article-'+a.id&&record.slug===a.slug);
+    if (!current||record.updatedAt||record.history?.length||record.body!==record.publishedSnapshot?.body||!legacy.has(record.title)||!legacy.has(record.publishedSnapshot?.title)) return record;
+    const copy=structuredClone(record);
+    const fields={title:current.title,summary:current.subtitle,body:current.body,enTitle:current.enTitle,enBody:current.enBody,enSummary:current.enSummary};
+    Object.assign(copy,fields);Object.assign(copy.publishedSnapshot,fields);
+    return copy;
+  });
+}
+
 export function transitionContent(records, action) {
   const rows = structuredClone(records), at = new Date().toISOString();
   if (action.type === 'save') {
