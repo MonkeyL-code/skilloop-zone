@@ -1,7 +1,7 @@
-import { domains, articles, members, activities, tracks } from './src/data.js';
-import { createDemoState, reduce } from './src/state.js';
-import { CONTENT_KEY, refreshEditorialSeeds } from './src/content.js';
-import { communityTopics } from './src/community-data.js';
+import { domains, articles, members, activities, tracks } from './src/data.js?v=20261103-loop3';
+import { createDemoState, reduce } from './src/state.js?v=20261103-loop3';
+import { CONTENT_KEY, refreshEditorialSeeds } from './src/content.js?v=20261103-loop3';
+import { communityTopics } from './src/community-data.js?v=20261103-loop3';
 
 const $ = (s, root = document) => root.querySelector(s);
 const $$ = (s, root = document) => [...root.querySelectorAll(s)];
