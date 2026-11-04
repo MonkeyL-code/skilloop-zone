@@ -56,7 +56,7 @@ export function reduce(previous, action) {
       const offer = action.mode === 'direct' ? requiredText(action.offer, '我能教的内容', 180) : '';
       const payerId = direction === 'learn' ? 'you' : peer.id, helperId = direction === 'learn' ? peer.id : 'you';
       if (cost) need(state.users[payerId].balance - state.users[payerId].reserved >= cost, '可用积分不足，可以选择直接互换或先帮助别人。');
-      state.orders.unshift({ id: `swap-${Date.now().toString(36)}-${state.orders.length + 1}`, memberId: peer.id, mode: action.mode, direction, topic, offer, slot, cost, payerId, helperId, status: 'invited', work: { you: '', partner: '' }, confirmed: { you: false, partner: false }, createdAt: stamp, sourceArticle: action.sourceArticle || '' });
+      state.orders.unshift({ id: `swap-${Date.now().toString(36)}-${state.orders.length + 1}`, memberId: peer.id, mode: action.mode, direction, topic, offer, slot, cost, payerId, helperId, status: 'invited', work: { you: '', partner: '' }, confirmed: { you: false, partner: false }, createdAt: stamp, sourceArticle: action.sourceArticle || '', sourceTopic: String(action.sourceTopic || '').slice(0,100) });
       break;
     }
     case 'ACCEPT_ORDER': {
