@@ -91,6 +91,13 @@ test('a new visitor reads an article, follows its contextual exchange link and c
   click('#reply-submit');
   assert.match(w.document.querySelector('.conversation-replies').textContent,/先看看你的脚本/);
   await go('exchange');click('[data-action=new-topic]');
+  assert.equal(w.document.querySelectorAll('.wizard-options button').length,6);
+  assert.equal(w.document.querySelectorAll('#topic-form').length,0,'新手先做选择，不显示大表单');
+  click('[data-choice="2"]');
+  click('[data-choice="1"]');
+  click('[data-choice="1"]');
+  assert.ok(w.document.querySelector('.wizard-result'),'三题后才生成预览');
+  w.document.querySelector('.wizard-edit').open=true;
   w.document.querySelector('#topic-title').value='找人一起整理自己的照片文件';
   w.document.querySelector('#topic-body').value='想先按月份分类，原文件保留不动。';
   click('#topic-submit');await tick();
