@@ -20,13 +20,13 @@ export const articles = [
     "author": "字节跳动 Seed",
     "date": "2026-11-03",
     "tag": "本期焦点",
-    "cover": "assets/editorial/seedance-2-5.webp",
+    "cover": "assets/editorial/seedance-2-5-portrait.webp",
     "related": [
       "Python",
       "Photoshop"
     ],
     "sourceUrl": "https://seed.bytedance.com/zh/seedance2_5",
-    "body": "<p class=\"lead\">一个镜头之外，故事还能走多远？Seedance 2.5 把单段视频生成时长提升到 30 秒，让创作拥有更完整的起承转合。</p><h2>从一个片段，到一段叙事</h2><p>根据官方介绍，模型支持两次视频延长，并进一步改善运动稳定性和画面真实感。对于需要连续动作、情绪变化和场景衔接的作品，更长的时长也意味着创作者有空间安排节奏，而不只是展示一个瞬间。</p><h2>参考不只复刻动作</h2><p>这次更新也强调对参考视频意图和镜头语言的理解，以及更精细的音视频编辑。白模控制、绿幕编辑等能力，则为专业流程增加了新的入口。封面中的熊猫来自官网生成案例：柔和的林间光线、毛发细节与环境层次，让人愿意停下来多看一眼。</p><p class=\"article-source\">转载摘编：<a href=\"https://seed.bytedance.com/zh/seedance2_5\">字节跳动 Seed 中文官网 · 阅读原文 ↗</a><br>图片：Seedance 2.5 官方生成案例画面，字节跳动 Seed</p>",
+    "body": "<p class=\"lead\">一个镜头之外，故事还能走多远？Seedance 2.5 把单段视频生成时长提升到 30 秒，让创作拥有更完整的起承转合。</p><h2>从一个片段，到一段叙事</h2><p>根据官方介绍，模型支持两次视频延长，并进一步改善运动稳定性和画面真实感。对于需要连续动作、情绪变化和场景衔接的作品，更长的时长也意味着创作者有空间安排节奏，而不只是展示一个瞬间。</p><h2>参考不只复刻动作</h2><p>这次更新也强调对参考视频意图和镜头语言的理解，以及更精细的音视频编辑。白模控制、绿幕编辑等能力，则为专业流程增加了新的入口。封面来自官网竖版生成案例：人物手持摄影机，暖色光源与暗部层次共同构成电影感的画面。</p><p class=\"article-source\">转载摘编：<a href=\"https://seed.bytedance.com/zh/seedance2_5\">字节跳动 Seed 中文官网 · 阅读原文 ↗</a><br>图片：Seedance 2.5 官方生成案例画面，字节跳动 Seed</p>",
     "enBody": "<p>Seedance 2.5 extends single video generations to 30 seconds and supports two extensions. Its official presentation highlights more stable motion, finer reference control, video editing, white-model control and green-screen editing.</p><p>The cover is a still from an official generated example.</p><p class=\"article-source\">转载摘编：<a href=\"https://seed.bytedance.com/zh/seedance2_5\">ByteDance Seed · 阅读原文 ↗</a><br>图片：ByteDance Seed, official Seedance 2.5 generated example</p>"
   },
   {

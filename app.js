@@ -1,8 +1,8 @@
-import { pathways, peerFeedback } from './src/loop-guide.js?v=20261104-cards';
-import { domains, articles, members, activities, tracks } from './src/data.js?v=20261104-cards';
-import { createDemoState, reduce } from './src/state.js?v=20261104-cards';
-import { CONTENT_KEY, refreshEditorialSeeds } from './src/content.js?v=20261104-cards';
-import { communityTopics } from './src/community-data.js?v=20261104-cards';
+import { pathways, peerFeedback } from './src/loop-guide.js?v=20261104-portrait';
+import { domains, articles, members, activities, tracks } from './src/data.js?v=20261104-portrait';
+import { createDemoState, reduce } from './src/state.js?v=20261104-portrait';
+import { CONTENT_KEY, refreshEditorialSeeds } from './src/content.js?v=20261104-portrait';
+import { communityTopics } from './src/community-data.js?v=20261104-portrait';
 
 const $ = (s, root = document) => root.querySelector(s);
 const $$ = (s, root = document) => [...root.querySelectorAll(s)];
