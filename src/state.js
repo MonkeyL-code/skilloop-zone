@@ -1,5 +1,5 @@
-import { members, activities, domains } from './data.js';
-import { communityTopics } from './community-data.js';
+import { members, activities, domains } from './data.js?v=20261109-loop-matches';
+import { communityTopics } from './community-data.js?v=20261109-loop-matches';
 
 export function createDemoState() {
   return {
@@ -56,12 +56,19 @@ export function reduce(previous, action) {
       const offer = action.mode === 'direct' ? requiredText(action.offer, '我能教的内容', 180) : '';
       const payerId = direction === 'learn' ? 'you' : peer.id, helperId = direction === 'learn' ? peer.id : 'you';
       if (cost) need(state.users[payerId].balance - state.users[payerId].reserved >= cost, '可用积分不足，可以选择直接互换或先帮助别人。');
-      state.orders.unshift({ id: `swap-${Date.now().toString(36)}-${state.orders.length + 1}`, memberId: peer.id, mode: action.mode, direction, topic, offer, slot, cost, payerId, helperId, status: 'invited', work: { you: '', partner: '' }, confirmed: { you: false, partner: false }, createdAt: stamp, sourceArticle: action.sourceArticle || '', sourceTopic: String(action.sourceTopic || '').slice(0,100) });
+      const requestTopic=String(action.requestTopic||'').slice(0,100);
+      if(requestTopic) {
+        const request=state.topics?.find(t=>t.id===requestTopic&&t.memberId==='you');
+        need(request,'未找到你的这条 Loop。');
+        need(!state.orders.some(o=>o.requestTopic===requestTopic&&['accepted','working','completed'].includes(o.status)),'这条 Loop 已有确认的伙伴。');
+      }
+      state.orders.unshift({ id: `swap-${Date.now().toString(36)}-${state.orders.length + 1}`, memberId: peer.id, mode: action.mode, direction, topic, offer, slot, cost, payerId, helperId, status: 'invited', work: { you: '', partner: '' }, confirmed: { you: false, partner: false }, createdAt: stamp, sourceArticle: action.sourceArticle || '', sourceTopic: String(action.sourceTopic || '').slice(0,100),requestTopic });
       break;
     }
     case 'ACCEPT_ORDER': {
       verified(); const o = order(); if (o.status === 'accepted') break;
       need(o.status === 'invited', '这份约定当前无法接受。');
+      need(!o.requestTopic||!state.orders.some(other=>other.id!==o.id&&other.requestTopic===o.requestTopic&&['accepted','working','completed'].includes(other.status)),'这条 Loop 已有确认的伙伴。');
       const payer = state.users[o.payerId];
       need(payer.balance - payer.reserved >= o.cost, '可用积分不足，请先释放其他预约。');
       payer.reserved += o.cost; o.status = 'accepted'; break;

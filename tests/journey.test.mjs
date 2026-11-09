@@ -36,6 +36,8 @@ test('a new visitor reads an article, follows its contextual exchange link and c
   assert.match(w.location.hash,/domain=visual/,'切换保留领域');
   assert.match(w.location.hash,/source=seedance/,'切换保留文章来源');
   await go(link.slice(1));
+  assert.ok(w.document.querySelector('.my-loops'),'找人学默认从自己的 Loop 开始');
+  await go(link.slice(1)+'&view=all');
   assert.ok(w.document.querySelector('.skill-box.want'));
   assert.ok(w.document.querySelector('.community-feed .topic-row'),'互助区以交流主题为主');
   const topicHref=w.document.querySelector('.topic-title').getAttribute('href');
@@ -101,7 +103,8 @@ test('a new visitor reads an article, follows its contextual exchange link and c
   w.document.querySelector('#topic-title').value='找人一起整理自己的照片文件';
   w.document.querySelector('#topic-body').value='想先按月份分类，原文件保留不动。';
   click('#topic-submit');await tick();
-  assert.match(w.document.querySelector('.topic-opening h1').textContent,/整理自己的照片/);
+  assert.match(w.document.querySelector('.my-loop-tab.selected').textContent,/整理自己的照片/);
+  assert.ok(w.document.querySelector('.match-recommendations'),'发布后直接进入这条 Loop 的推荐');
   assert.deepEqual(errors,[]);
   dom.window.close();
 });
